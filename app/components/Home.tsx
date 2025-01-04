@@ -9,8 +9,8 @@ export default function Home() {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e:any) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setMessage('');
     setError('');
 
@@ -31,6 +31,7 @@ export default function Home() {
         setError(errorData.error || 'Failed to create tenant');
       }
     } catch (error) {
+      console.log('Error creating tenant:', error);
       setError('An error occurred while creating the tenant');
     }
   };
@@ -70,7 +71,7 @@ export default function Home() {
       )}
 
       {error && (
-        <div style={{backgroundColor:'red', color:'white'}} className="mt-4">
+        <div style={{ backgroundColor: 'red', color: 'white' }} className="mt-4">
           <h3>Error</h3>
           <p>{error}</p>
         </div>

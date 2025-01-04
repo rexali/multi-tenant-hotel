@@ -1,8 +1,8 @@
-import { notFound } from 'next/navigation'
-import TenantModel  from '@/app/lib/model.tenant'
+import { notFound } from 'next/navigation';
+import TenantModel  from '@/app/lib/model.tenant';
 
-export default async function SubdomainPage({ params }: { params: { subdomain: string } }) {
-  const { subdomain } = params
+export default async function SubdomainPage({ params }: { params: Promise<{ subdomain: string }>}) {
+  const { subdomain } = await params
   console.log('SubdomainPage: Rendering page for subdomain:', subdomain)
   
   try {
